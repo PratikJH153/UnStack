@@ -69,8 +69,8 @@ class DatabaseService {
   }
 
   Future<List<Map<String, dynamic>>> getMapLists() async {
-    Database db = await (this.database as FutureOr<Database>);
-    final List<Map<String, dynamic>> result = await db.query(table);
+    Database? db = await this.database;
+    final List<Map<String, dynamic>> result = await db!.query(table);
     return result;
   }
 
@@ -87,15 +87,15 @@ class DatabaseService {
   }
 
   Future<int> insertTodo(Todo todo) async {
-    Database db = await (this.database as FutureOr<Database>);
+    Database? db = await this.database;
 
-    final int id = await db.insert(table, todo.toMap());
+    final int id = await db!.insert(table, todo.toMap());
     return id;
   }
 
   Future<int> deleteTodo(int? id) async {
-    Database db = await (this.database as FutureOr<Database>);
-    final int result = await db.delete(
+    Database? db = await this.database;
+    final int result = await db!.delete(
       table,
       where: '$colId = ?',
       whereArgs: [id],
@@ -104,8 +104,8 @@ class DatabaseService {
   }
 
   Future<int> updateTodo(Todo todo) async {
-    Database db = await (this.database as FutureOr<Database>);
-    final int result = await db.update(
+    Database? db = await this.database;
+    final int result = await db!.update(
       table,
       todo.toMap(),
       where: '$colId = ?',
@@ -115,14 +115,14 @@ class DatabaseService {
   }
 
   Future<int> deleteAll() async {
-    Database db = await (this.database as FutureOr<Database>);
-    final int result = await db.delete(table);
+    Database? db = await this.database;
+    final int result = await db!.delete(table);
     return result;
   }
 
   Future<List<Map<String, dynamic>>> getTimeMapList() async {
-    Database db = await (this.database as FutureOr<Database>);
-    final List<Map<String, dynamic>> result = await db.query(timelineTable);
+    Database? db = await this.database;
+    final List<Map<String, dynamic>> result = await db!.query(timelineTable);
     return result;
   }
 
@@ -137,14 +137,14 @@ class DatabaseService {
   }
 
   Future<int> insertTimeLine(Timeline timeline) async {
-    Database db = await (this.database as FutureOr<Database>);
-    final int result = await db.insert(timelineTable, timeline.toMap());
+    Database? db = await this.database;
+    final int result = await db!.insert(timelineTable, timeline.toMap());
     return result;
   }
 
   Future<int> updateTimeline(Timeline timeline) async {
-    Database db = await (this.database as FutureOr<Database>);
-    final int result = await db.update(
+    Database? db = await this.database;
+    final int result = await db!.update(
       timelineTable,
       timeline.toMap(),
       where: '$colId = ?',
@@ -154,15 +154,15 @@ class DatabaseService {
   }
 
   Future<int> insertChallenge(Challenge challenge) async {
-    Database db = await (this.database as FutureOr<Database>);
+    Database? db = await this.database;
 
-    final int result = await db.insert(challengeTable, challenge.toMap());
+    final int result = await db!.insert(challengeTable, challenge.toMap());
     return result;
   }
 
   Future<int> deleteChallenge(int? id) async {
-    Database db = await (this.database as FutureOr<Database>);
-    final int result = await db.delete(
+    Database? db = await this.database;
+    final int result = await db!.delete(
       challengeTable,
       where: '$colId = ?',
       whereArgs: [id],
@@ -171,8 +171,8 @@ class DatabaseService {
   }
 
   Future<int> updateChallenge(Challenge challenge) async {
-    Database db = await (this.database as FutureOr<Database>);
-    final int result = await db.update(
+    Database? db = await this.database;
+    final int result = await db!.update(
       challengeTable,
       challenge.toMap(),
       where: '$colId = ?',
@@ -182,14 +182,14 @@ class DatabaseService {
   }
 
   Future<int> deleteAllChallenges() async {
-    Database db = await (this.database as FutureOr<Database>);
-    final int result = await db.delete(challengeTable);
+    Database? db = await this.database;
+    final int result = await db!.delete(challengeTable);
     return result;
   }
 
   Future<List<Map<String, dynamic>>> getChallengeMap() async {
-    Database db = await (this.database as FutureOr<Database>);
-    final List<Map<String, dynamic>> result = await db.query(challengeTable);
+    Database? db = await this.database;
+    final List<Map<String, dynamic>> result = await db!.query(challengeTable);
     return result;
   }
 
@@ -216,8 +216,8 @@ class DatabaseService {
   }
 
   Future<int> updateDay(Day day) async {
-    Database db = await (this.database as FutureOr<Database>);
-    final int result = await db.update(
+    Database? db = await this.database;
+    final int result = await db!.update(
       dayTable,
       day.toMap(),
       where: '$colId = ?',
@@ -227,14 +227,14 @@ class DatabaseService {
   }
 
   Future<int> deleteAllDays() async {
-    Database db = await (this.database as FutureOr<Database>);
-    final int result = await db.delete(timelineTable);
+    Database? db = await this.database;
+    final int result = await db!.delete(timelineTable);
     return result;
   }
 
   Future<List<Map<String, dynamic>>> getDayMap() async {
-    Database db = await (this.database as FutureOr<Database>);
-    final List<Map<String, dynamic>> result = await db.query(dayTable);
+    Database? db = await this.database;
+    final List<Map<String, dynamic>> result = await db!.query(dayTable);
     return result;
   }
 
@@ -248,15 +248,15 @@ class DatabaseService {
   }
 
   Future<int> insertGoal(Goal goal) async {
-    Database db = await (this.database as FutureOr<Database>);
+    Database? db = await this.database;
 
-    final int result = await db.insert(goalsTable, goal.toMap());
+    final int result = await db!.insert(goalsTable, goal.toMap());
     return result;
   }
 
   Future<int> deleteGoal(int? id) async {
-    Database db = await (this.database as FutureOr<Database>);
-    final int result = await db.delete(
+    Database? db = await this.database;
+    final int result = await db!.delete(
       goalsTable,
       where: '$colId = ?',
       whereArgs: [id],
@@ -265,8 +265,8 @@ class DatabaseService {
   }
 
   Future<int> updateGoal(Goal goal) async {
-    Database db = await (this.database as FutureOr<Database>);
-    final int result = await db.update(
+    Database? db = await this.database;
+    final int result = await db!.update(
       goalsTable,
       goal.toMap(),
       where: '$colId = ?',
@@ -276,14 +276,14 @@ class DatabaseService {
   }
 
   Future<int> deleteAllGoals() async {
-    Database db = await (this.database as FutureOr<Database>);
-    final int result = await db.delete(goalsTable);
+    Database? db = await this.database;
+    final int result = await db!.delete(goalsTable);
     return result;
   }
 
   Future<List<Map<String, dynamic>>> getGoalsMap() async {
-    Database db = await (this.database as FutureOr<Database>);
-    final List<Map<String, dynamic>> result = await db.query(goalsTable);
+    Database? db = await this.database;
+    final List<Map<String, dynamic>> result = await db!.query(goalsTable);
     return result;
   }
 

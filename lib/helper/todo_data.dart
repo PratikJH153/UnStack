@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 
 class TodoData extends ChangeNotifier {
   final DatabaseService _databaseService = DatabaseService.instance;
-  List<Todo>? todoList;
+  List<Todo> todoList = [];
 
   Todo? firstTodo;
   List<int?> orders = [];
@@ -28,12 +28,12 @@ class TodoData extends ChangeNotifier {
     orders.forEach((id) {
       tempList.forEach((element) {
         if (id == element.id) {
-          todoList!.add(element);
+          todoList.add(element);
         }
       });
     });
 
-    todoList!.addAll(completedList);
+    todoList.addAll(completedList);
 
     if (isCompleted) {
       getTodoData();
@@ -45,7 +45,7 @@ class TodoData extends ChangeNotifier {
   }
 
   void clearData() async {
-    todoList!.clear();
+    todoList.clear();
     orders.clear();
     updateOder(orders);
     await _databaseService.deleteAll();
@@ -53,16 +53,16 @@ class TodoData extends ChangeNotifier {
   }
 
   bool get isListEmpty {
-    return todoList == null || todoList == [] || todoList!.isEmpty;
+    return todoList == [] || todoList.isEmpty;
   }
 
   void getTodoData() {
-    firstTodo = todoList!.first;
+    firstTodo = todoList.first;
     notifyListeners();
   }
 
   Todo getTodo(int index) {
-    return todoList![index];
+    return todoList[index];
   }
 
   void sortTodo(List<Todo> result) {
@@ -71,16 +71,16 @@ class TodoData extends ChangeNotifier {
   }
 
   void addTodo(Todo todo, int id) {
-    todoList!.add(todo);
+    todoList.add(todo);
     orders.add(id);
 
     updateOder(orders);
-    sortTodo(todoList!);
+    sortTodo(todoList);
     notifyListeners();
   }
 
   void deleteTodo(Todo todo) async {
-    todoList!.remove(todo);
+    todoList.remove(todo);
     await getOrder();
     orders.remove(todo.id);
     updateOder(orders);
@@ -92,8 +92,8 @@ class TodoData extends ChangeNotifier {
     if (oldIndex < newIndex) {
       newIndex -= 1;
     }
-    final Todo item = todoList!.removeAt(oldIndex);
-    todoList!.insert(newIndex, item);
+    final Todo item = todoList.removeAt(oldIndex);
+    todoList.insert(newIndex, item);
     final int? previousItem = orders.removeAt(oldIndex);
     orders.insert(newIndex, previousItem);
     updateOder(orders);
@@ -110,7 +110,7 @@ class TodoData extends ChangeNotifier {
   }
 
   void updateTodo(Todo todo) {
-    todoList![todoList!.indexWhere((element) => element.id == todo.id)] = todo;
+    todoList[todoList.indexWhere((element) => element.id == todo.id)] = todo;
     if (todo.status == 0) {
       if (!orders.contains(todo.id)) {
         orders.add(todo.id);
@@ -121,18 +121,18 @@ class TodoData extends ChangeNotifier {
     updateOder(orders);
     percentage;
     isCompleted;
-    sortTodo(todoList!);
+    sortTodo(todoList);
     notifyListeners();
   }
 
   int get completedTasks {
     int completedTask =
-        todoList!.where((Todo todo) => todo.status == 1).toList().length;
+        todoList.where((Todo todo) => todo.status == 1).toList().length;
     return completedTask;
   }
 
   int get todoCount {
-    return todoList!.length;
+    return todoList.length;
   }
 
   double get percentage {

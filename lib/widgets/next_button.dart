@@ -7,8 +7,8 @@ Widget nextButton(Function function) {
     style: ElevatedButton.styleFrom(
       primary: kaccentColor,
       padding: const EdgeInsets.symmetric(
-        horizontal: 40,
-        vertical: 15,
+        horizontal: 30,
+        vertical: 12,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),

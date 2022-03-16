@@ -22,7 +22,7 @@ class TabViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: 3,
       child: SafeArea(
         child: Scaffold(
           primary: true,
@@ -39,21 +39,28 @@ class TabViewPage extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "$_formattedTime\n",
-                            style: kHintTextFieldTextStyle.copyWith(
-                              fontSize: 16,
+                    Container(
+                      width: 240,
+                      child: RichText(
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "$_formattedTime\n",
+                              style: kHintTextFieldTextStyle.copyWith(
+                                fontSize: 16,
+                              ),
                             ),
-                          ),
-                          TextSpan(
-                            text: "Hey, $displayName",
-                            style: kIntroTextStyle.copyWith(
-                                fontSize: 22, height: 1.6),
-                          ),
-                        ],
+                            TextSpan(
+                              text: "Hey, $displayName",
+                              style: kIntroTextStyle.copyWith(
+                                fontSize: 20,
+                                height: 1.6,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Spacer(),
@@ -84,9 +91,9 @@ class TabViewPage extends StatelessWidget {
                 tabs: const [
                   const Tab(icon: Icon(CupertinoIcons.rocket)),
                   const Tab(icon: Icon(CupertinoIcons.timer)),
-                  const Tab(icon: Icon(CupertinoIcons.bolt_horizontal)),
+                  // const Tab(icon: Icon(CupertinoIcons.bolt_horizontal)),
                   const Tab(icon: Icon(CupertinoIcons.calendar)),
-                  const Tab(icon: Icon(CupertinoIcons.loop)),
+                  // const Tab(icon: Icon(CupertinoIcons.loop)),
                 ],
               ),
             ),
@@ -96,9 +103,9 @@ class TabViewPage extends StatelessWidget {
             children: [
               HomePage(),
               TimelinePage(),
-              PlanGoalsPage(),
+              // PlanGoalsPage(),
               CalendarPage(),
-              ChallengePage(),
+              // ChallengePage(),
             ],
           ),
         ),

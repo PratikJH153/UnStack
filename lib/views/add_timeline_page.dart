@@ -80,12 +80,6 @@ class _AddTimeLinePageState extends State<AddTimeLinePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: floatingActionButton(
-        context: context,
-        location: AddTimeLinePage.id,
-        icon: CupertinoIcons.calendar_badge_plus,
-        backgroundColor: kprimaryColor,
-      ),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
@@ -99,16 +93,17 @@ class _AddTimeLinePageState extends State<AddTimeLinePage> {
                   func: _submit,
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     dayWidget(
                       title: "Day $day",
                     ),
-                    GestureDetector(
-                      onTap: () async {
+                    TextButton(
+                      onPressed: () async {
                         showDialog(
                           context: context,
                           builder: (context) {
@@ -126,21 +121,13 @@ class _AddTimeLinePageState extends State<AddTimeLinePage> {
                           },
                         );
                       },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 18,
-                          vertical: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.red.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Text(
-                          "Reset",
-                          style: const TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                      ),
+                      child: Text(
+                        "Reset",
+                        style: TextStyle(
+                          color: Colors.red[400],
                         ),
                       ),
                     ),

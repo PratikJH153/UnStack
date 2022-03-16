@@ -25,7 +25,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late ConfettiController _controllerCenter;
-  String? displayName;
+  late String displayName;
   // bool isEmpty = false;
 
   void getData() async {
@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
     await Provider.of<TodoData>(context, listen: false).getTodoFromDatabase();
 
     setState(() {
-      displayName = names;
+      displayName = names!;
     });
   }
 
@@ -126,8 +126,10 @@ class _HomePageState extends State<HomePage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
                                     Container(
-                                      padding: const EdgeInsets.all(20),
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Theme.of(context)
@@ -135,14 +137,14 @@ class _HomePageState extends State<HomePage> {
                                         boxShadow: const [
                                           BoxShadow(
                                             color: Colors.black38,
-                                            offset: Offset(6.0, 6.0),
-                                            blurRadius: 15.0,
+                                            offset: Offset(4.0, 4.0),
+                                            blurRadius: 10.0,
                                             spreadRadius: 3.0,
                                           ),
                                           BoxShadow(
                                             color: Colors.black12,
-                                            offset: Offset(-6.0, -6.0),
-                                            blurRadius: 15.0,
+                                            offset: Offset(-4.0, -4.0),
+                                            blurRadius: 10.0,
                                             spreadRadius: 3.0,
                                           ),
                                         ],
@@ -151,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                                         arcType: ArcType.FULL,
                                         animateFromLastPercent: true,
                                         arcBackgroundColor: Colors.black26,
-                                        radius: 230.0,
+                                        radius: 130.0,
                                         animation: true,
                                         animationDuration: 1200,
                                         lineWidth: 20.0,

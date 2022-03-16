@@ -6,11 +6,14 @@ class OrderData {
     await prefs.setStringList('order', order);
   }
 
-  static Future<List<int?>> getOrder() async {
+  static Future<List<int>> getOrder() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<int> orderList = [];
 
-    List<int?> orderList =
-        prefs.getStringList('order')!.map((e) => int.parse(e)).toList();
+    var order = prefs.getStringList("order");
+    if (order != null) {
+      orderList = order.map((e) => int.parse(e)).toList();
+    }
     return orderList;
   }
 }

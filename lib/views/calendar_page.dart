@@ -18,12 +18,33 @@ class _CalendarPageState extends State<CalendarPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 20, left: 10),
-            child: Text(
-              "Your Daily Tracker",
-              style: kTextFieldHintTextStyle,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.alphabetic,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20, left: 10),
+                child: Text(
+                  "Your Daily Tracker",
+                  style: kTextFieldHintTextStyle.copyWith(
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () {},
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                ),
+                child: Text(
+                  "Reset",
+                  style: TextStyle(
+                    color: Colors.red[400],
+                  ),
+                ),
+              ),
+            ],
           ),
           Expanded(
             child: FutureBuilder(
@@ -48,6 +69,10 @@ class _CalendarPageState extends State<CalendarPage> {
                         ),
                       )
                     : GridView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        padding: const EdgeInsets.only(
+                          bottom: 150,
+                        ),
                         itemCount: snapshot.data.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 5,
