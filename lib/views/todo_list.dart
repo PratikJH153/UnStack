@@ -42,10 +42,14 @@ class _TodoListState extends State<TodoList> {
                   itemBuilder: (context, index) {
                     final todo = todoData.getTodo(index);
                     return Slidable(
-                      startActionPane: ActionPane(
-                        motion: Container(),
+                      direction: Axis.horizontal,
+                      endActionPane: ActionPane(
+                        motion: const ScrollMotion(),
                         children: [
                           IconButton(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 30,
+                            ),
                             icon: Icon(
                               CupertinoIcons.pencil_outline,
                               color: Colors.white,
@@ -60,6 +64,9 @@ class _TodoListState extends State<TodoList> {
                             ),
                           ),
                           IconButton(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                            ),
                             icon: Icon(
                               CupertinoIcons.delete_simple,
                               color: Colors.white,

@@ -34,7 +34,7 @@ class TabViewPage extends StatelessWidget {
                 padding: const EdgeInsets.only(
                   left: 22,
                   right: 22,
-                  top: 15,
+                  top: 20,
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,13 +49,13 @@ class TabViewPage extends StatelessWidget {
                             TextSpan(
                               text: "$_formattedTime\n",
                               style: kHintTextFieldTextStyle.copyWith(
-                                fontSize: 16,
+                                fontSize: 15,
                               ),
                             ),
                             TextSpan(
                               text: "Hey, $displayName",
                               style: kIntroTextStyle.copyWith(
-                                fontSize: 20,
+                                fontSize: 18,
                                 height: 1.6,
                               ),
                             ),
