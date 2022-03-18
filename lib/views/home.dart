@@ -91,9 +91,9 @@ class _HomePageState extends State<HomePage> {
         location: AddTodoPage.id,
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: SafeArea(
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 25),
             child: Stack(
               children: [
                 Container(
@@ -121,15 +121,16 @@ class _HomePageState extends State<HomePage> {
                     !Provider.of<TodoData>(context).isListEmpty
                         ? Consumer<TodoData>(
                             builder: (context, todoData, child) {
-                              return Container(
-                                alignment: Alignment.center,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const SizedBox(
-                                      height: 10,
+                              return Column(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(10),
+                                    margin: EdgeInsets.only(top: 20),
+                                    decoration: BoxDecoration(
+                                      color: Color.fromARGB(255, 29, 29, 29),
+                                      shape: BoxShape.circle,
                                     ),
-                                    Container(
+                                    child: Container(
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Theme.of(context)
@@ -167,27 +168,20 @@ class _HomePageState extends State<HomePage> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
-                                              Icon(
-                                                CupertinoIcons
-                                                    .square_stack_3d_down_right_fill,
-                                                size: 30,
-                                              ),
-                                              SizedBox(
-                                                height: 22,
-                                              ),
                                               RichText(
+                                                textAlign: TextAlign.center,
                                                 text: TextSpan(
                                                   children: [
                                                     TextSpan(
                                                       text:
-                                                          "${(todoData.percentage * 100).round()}% ",
+                                                          "${(todoData.percentage * 100).round()}%\n",
                                                       style: kIntroTextStyle
                                                           .copyWith(
-                                                        fontSize: 22,
+                                                        fontSize: 35,
                                                       ),
                                                     ),
                                                     TextSpan(
-                                                      text: "Done",
+                                                      text: "Completed",
                                                       style: kDesTextStyle
                                                           .copyWith(
                                                               fontSize: 16,
@@ -211,20 +205,15 @@ class _HomePageState extends State<HomePage> {
                                         ]),
                                       ),
                                     ),
-                                    // SizedBox(
-                                    //   height: 25,
-                                    // ),
-                                    // Text(
-                                    //   "Focused Todo",
-                                    //   style: kTextFieldHintTextStyle.copyWith(
-                                    //     fontSize: 20,
-                                    //     color: Colors.grey[200],
-                                    //   ),
-                                    // ),
-                                    SizedBox(
-                                      height: 40,
-                                    ),
-                                    !Provider.of<TodoData>(context).isCompleted
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 26, vertical: 25),
+                                    child: !Provider.of<TodoData>(context)
+                                            .isCompleted
                                         ? FirstTodoWidget(
                                             todo: todoData.getTodo(0),
                                             onConfirmed: () async {
@@ -256,8 +245,8 @@ class _HomePageState extends State<HomePage> {
                                             },
                                           )
                                         : DummyTile(),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               );
                             },
                           )

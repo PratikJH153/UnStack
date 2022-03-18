@@ -1,11 +1,11 @@
-import 'package:dailytodo/views/add_challenge_page.dart';
-import 'package:dailytodo/views/add_planned_goals_page.dart';
+import 'package:dailytodo/views/later/add_challenge_page.dart';
+import 'package:dailytodo/views/later/add_planned_goals_page.dart';
 import 'package:dailytodo/views/add_timeline_page.dart';
 import 'package:dailytodo/views/add_todo_page.dart';
 import 'package:dailytodo/views/ask_name_page.dart';
 import 'package:dailytodo/views/home.dart';
 import 'package:dailytodo/views/info_page.dart';
-import 'package:dailytodo/views/plan_goals_page.dart';
+import 'package:dailytodo/views/later/plan_goals_page.dart';
 import 'package:dailytodo/views/todo_list_page.dart';
 import 'package:dailytodo/views/wrapper.dart';
 import 'package:flutter/material.dart';

@@ -1,8 +1,8 @@
 import 'package:dailytodo/views/calendar_page.dart';
-import 'package:dailytodo/views/challenge_page.dart';
+import 'package:dailytodo/views/later/challenge_page.dart';
 import 'package:dailytodo/views/home.dart';
 import 'package:dailytodo/views/info_page.dart';
-import 'package:dailytodo/views/plan_goals_page.dart';
+import 'package:dailytodo/views/later/plan_goals_page.dart';
 import 'package:dailytodo/views/timeline_page.dart';
 import 'package:dailytodo/views/todo_list_page.dart';
 import 'package:dailytodo/widgets/constants.dart';

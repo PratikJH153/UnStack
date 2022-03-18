@@ -1,6 +1,6 @@
 import 'package:dailytodo/database/database.dart';
 import 'package:dailytodo/models/challenge.dart';
-import 'package:dailytodo/views/add_challenge_page.dart';
+import 'package:dailytodo/views/later/add_challenge_page.dart';
 import 'package:dailytodo/widgets/confirmation_slider.dart';
 import 'package:dailytodo/widgets/constants.dart';
 import 'package:dailytodo/widgets/floatingactionButton.dart';

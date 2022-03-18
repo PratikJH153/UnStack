@@ -1,5 +1,5 @@
 import 'package:dailytodo/models/goal.dart';
-import 'package:dailytodo/views/add_planned_goals_page.dart';
+import 'package:dailytodo/views/later/add_planned_goals_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';

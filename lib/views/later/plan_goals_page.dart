@@ -1,6 +1,6 @@
 import 'package:dailytodo/database/database.dart';
 import 'package:dailytodo/models/goal.dart';
-import 'package:dailytodo/views/add_planned_goals_page.dart';
+import 'package:dailytodo/views/later/add_planned_goals_page.dart';
 import 'package:dailytodo/widgets/constants.dart';
 import 'package:dailytodo/widgets/floatingactionButton.dart';
 import 'package:dailytodo/widgets/goal_tile.dart';

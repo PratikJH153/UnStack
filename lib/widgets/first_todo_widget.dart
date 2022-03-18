@@ -18,9 +18,17 @@ class FirstTodoWidget extends StatelessWidget {
     return Container(
       width: getWidth(context),
       padding: const EdgeInsets.all(15),
-      decoration: containerDecoration,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFF6e9fff),
+            Color(0xFF2b5dff),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(40),
+      ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.only(
