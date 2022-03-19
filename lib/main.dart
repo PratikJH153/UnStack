@@ -1,3 +1,4 @@
+import 'package:dailytodo/helper/custom_route.dart';
 import 'package:dailytodo/views/later/add_challenge_page.dart';
 import 'package:dailytodo/views/later/add_planned_goals_page.dart';
 import 'package:dailytodo/views/add_timeline_page.dart';
@@ -9,11 +10,23 @@ import 'package:dailytodo/views/later/plan_goals_page.dart';
 import 'package:dailytodo/views/todo_list_page.dart';
 import 'package:dailytodo/views/wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'helper/todo_data.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   Paint.enableDithering = true;
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ],
+  );
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.black,
+    statusBarBrightness: Brightness.light,
+  ));
   runApp(MyApp());
 }
 
@@ -33,6 +46,11 @@ class MyApp extends StatelessWidget {
             cursorColor: Colors.white,
           ),
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          pageTransitionsTheme: PageTransitionsTheme(
+            builders: {
+              TargetPlatform.android: CustomPageTransitionBuilder(),
+            },
+          ),
         ),
         initialRoute: Wrapper.id,
         routes: {

@@ -1,4 +1,5 @@
 import 'package:dailytodo/database/database.dart';
+import 'package:dailytodo/helper/ad_helper.dart';
 import 'package:dailytodo/helper/display_name.dart';
 import 'package:dailytodo/models/todo.dart';
 import 'package:dailytodo/helper/todo_data.dart';
@@ -26,6 +27,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late ConfettiController _controllerCenter;
   late String displayName;
+  final AdmobHelper admobHelper = AdmobHelper();
   // bool isEmpty = false;
 
   void getData() async {
@@ -124,10 +126,8 @@ class _HomePageState extends State<HomePage> {
                               return Column(
                                 children: [
                                   Container(
-                                    padding: EdgeInsets.all(10),
-                                    margin: EdgeInsets.only(top: 20),
+                                    margin: EdgeInsets.only(top: 40),
                                     decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 29, 29, 29),
                                       shape: BoxShape.circle,
                                     ),
                                     child: Container(
@@ -207,7 +207,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   SizedBox(
-                                    height: 10,
+                                    height: 20,
                                   ),
                                   Container(
                                     padding: const EdgeInsets.symmetric(
@@ -217,6 +217,12 @@ class _HomePageState extends State<HomePage> {
                                         ? FirstTodoWidget(
                                             todo: todoData.getTodo(0),
                                             onConfirmed: () async {
+                                              var rng = Random();
+                                              int randomNum = rng.nextInt(1);
+                                              // print(random_num);
+                                              if (randomNum == 0) {
+                                                admobHelper.showInterad(() {});
+                                              }
                                               final todos = todoData.getTodo(0);
                                               _controllerCenter.play();
                                               Todo todo = Todo(
@@ -225,6 +231,8 @@ class _HomePageState extends State<HomePage> {
                                                 title: todos.title,
                                               );
                                               todo.id = todos.id;
+                                              ScaffoldMessenger.of(context)
+                                                  .hideCurrentSnackBar();
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(
                                                 snackBarWidget(

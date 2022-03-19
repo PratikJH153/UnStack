@@ -17,29 +17,41 @@ class FirstTodoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: getWidth(context),
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.only(
+        left: 50,
+        top: 20,
+        right: 30,
+        bottom: 20,
+      ),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        // gradient: LinearGradient(
+        //   colors: [
+        //     Color(0xFF6e9fff),
+        //     Color(0xFF2b5dff),
+        //   ],
+        // ),
+        gradient: new LinearGradient(
+          stops: [0.08, 0.015],
           colors: [
-            Color(0xFF6e9fff),
-            Color(0xFF2b5dff),
+            priorities[todo!.priority],
+            kprimaryColor,
           ],
         ),
         borderRadius: BorderRadius.circular(40),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 10.0,
-              bottom: 20,
-            ),
-            child: priorityWidget(
-              color: priorities[todo!.priority],
-              title: todo!.priority!,
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.only(
+          //     top: 10.0,
+          //     bottom: 20,
+          //   ),
+          //   child: priorityWidget(
+          //     color: priorities[todo!.priority],
+          //     title: todo!.priority!,
+          //   ),
+          // ),
           Text(
             todo!.title!,
             textAlign: TextAlign.center,
@@ -50,7 +62,7 @@ class FirstTodoWidget extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(
-              top: 40.0,
+              top: 30.0,
               bottom: 10,
             ),
             child: confirmationSlider(

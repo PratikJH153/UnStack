@@ -30,7 +30,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
 
   _submit() async {
     if (_titleController.text.trim().isNotEmpty &&
-        _titleController.text.trim().length > 3) {
+        _titleController.text.trim().length > 1) {
       if (widget.todo == null) {
         Todo todo = Todo(
           title: _titleController.text.trim(),
