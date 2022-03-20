@@ -48,7 +48,9 @@ class _HomePageState extends State<HomePage> {
     _controllerCenter =
         ConfettiController(duration: const Duration(seconds: 3));
     getData();
-
+    if (Provider.of<TodoData>(context, listen: false).todoCount == 1) {
+      admobHelper.showInterad(() {});
+    }
     super.initState();
   }
 
@@ -251,7 +253,6 @@ class _HomePageState extends State<HomePage> {
                                               });
                                               await DatabaseService.instance
                                                   .updateTodo(todo);
-
                                               if (todoData.completedTasks ==
                                                   1) {
                                                 admobHelper.showInterad(() {});

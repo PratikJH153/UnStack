@@ -44,8 +44,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
           Provider.of<TodoData>(context, listen: false)
               .addTodo(todo, value); //Todo(id:null, title:jkhsadfkjds)
         }); //Todo(title:jkhsadfkjds)
-        final todoData =
-            Provider.of<TodoData>(context, listen: false).todoCount;
+
         Navigator.of(context).pushNamedAndRemoveUntil(
             Wrapper.id, (Route<dynamic> route) => false);
       } else {

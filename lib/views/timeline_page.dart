@@ -42,6 +42,7 @@ class TimelinePage extends StatelessWidget {
             }
             return snapshot.data.length > 0
                 ? ListView.builder(
+                    physics: const BouncingScrollPhysics(),
                     padding: const EdgeInsets.only(
                       bottom: 100,
                       top: 10,

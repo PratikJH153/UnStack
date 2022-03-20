@@ -33,6 +33,7 @@ class _TodoListState extends State<TodoList> {
                   canvasColor: Colors.transparent.withOpacity(0),
                 ),
                 child: ReorderableListView.builder(
+                  physics: const BouncingScrollPhysics(),
                   onReorder: (oldIndex, newIndex) {
                     Provider.of<TodoData>(context, listen: false)
                         .updateOrder(oldIndex, newIndex);

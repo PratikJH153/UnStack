@@ -51,11 +51,9 @@ class _AskNamePageState extends State<AskNamePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             backButton(context),
-            _isLoading
+            !_isLoading
                 ? nextButton(() => getName(context))
-                : Center(
-                    child: CircularProgressIndicator(),
-                  ),
+                : CircularProgressIndicator(),
           ],
         ),
       ),
@@ -140,9 +138,9 @@ class _AskNamePageState extends State<AskNamePage> {
                                   hintStyle: kHintTextFieldTextStyle,
                                 ),
                                 validator: (val) {
-                                  return val!.length < 3
+                                  return val!.trim().length < 3
                                       ? "Please enter a valid name"
-                                      : val.length > 20
+                                      : val.trim().length > 20
                                           ? "Please enter characters less than 20."
                                           : null;
                                 },
