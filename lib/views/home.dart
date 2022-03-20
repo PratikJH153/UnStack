@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                                         arcType: ArcType.FULL,
                                         animateFromLastPercent: true,
                                         arcBackgroundColor: Colors.black26,
-                                        radius: 130.0,
+                                        radius: 120.0,
                                         animation: true,
                                         animationDuration: 1200,
                                         lineWidth: 20.0,

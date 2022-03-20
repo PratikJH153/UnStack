@@ -2,12 +2,10 @@ import 'package:dailytodo/database/database.dart';
 import 'package:dailytodo/helper/ad_helper.dart';
 import 'package:dailytodo/models/todo.dart';
 import 'package:dailytodo/helper/todo_data.dart';
-import 'package:dailytodo/views/todo_list.dart';
 import 'package:dailytodo/views/todo_list_page.dart';
 import 'package:dailytodo/views/wrapper.dart';
 import 'package:dailytodo/widgets/app_bar.dart';
 import 'package:dailytodo/widgets/constants.dart';
-import 'package:dailytodo/widgets/floatingactionButton.dart';
 import 'package:dailytodo/widgets/priority_widget.dart';
 import 'package:dailytodo/widgets/snackbar_widget.dart';
 import 'package:dailytodo/widgets/textFields.dart';
@@ -57,6 +55,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
             Wrapper.id, (Route<dynamic> route) => false);
       }
     } else {
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         snackBarWidget(
           title: "Please enter a valid title",
@@ -138,7 +137,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
                 Container(
                   decoration: containerDecoration,
                   child: TextFieldWidget(
-                    hintText: "Enter the task",
+                    hintText: "Enter a task",
                     textEditingController: _titleController,
                   ),
                 ),

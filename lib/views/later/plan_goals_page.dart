@@ -2,7 +2,6 @@ import 'package:dailytodo/database/database.dart';
 import 'package:dailytodo/models/goal.dart';
 import 'package:dailytodo/views/later/add_planned_goals_page.dart';
 import 'package:dailytodo/widgets/constants.dart';
-import 'package:dailytodo/widgets/floatingactionButton.dart';
 import 'package:dailytodo/widgets/goal_tile.dart';
 import 'package:dailytodo/widgets/no_todo_widget.dart';
 import 'package:flutter/cupertino.dart';

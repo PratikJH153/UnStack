@@ -2,7 +2,6 @@ import 'package:dailytodo/database/database.dart';
 import 'package:dailytodo/models/timeline.dart';
 import 'package:dailytodo/views/add_timeline_page.dart';
 import 'package:dailytodo/widgets/constants.dart';
-import 'package:dailytodo/widgets/floatingactionButton.dart';
 import 'package:dailytodo/widgets/no_todo_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

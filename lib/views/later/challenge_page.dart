@@ -3,7 +3,6 @@ import 'package:dailytodo/models/challenge.dart';
 import 'package:dailytodo/views/later/add_challenge_page.dart';
 import 'package:dailytodo/widgets/confirmation_slider.dart';
 import 'package:dailytodo/widgets/constants.dart';
-import 'package:dailytodo/widgets/floatingactionButton.dart';
 import 'package:dailytodo/widgets/no_todo_widget.dart';
 import 'package:dailytodo/widgets/snackbar_widget.dart';
 import 'package:flutter/cupertino.dart';

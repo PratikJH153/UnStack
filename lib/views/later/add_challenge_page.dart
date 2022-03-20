@@ -120,6 +120,7 @@ class _AddChallengePageState extends State<AddChallengePage> {
                                     Wrapper.id,
                                     (Route<dynamic> route) => false);
                               },
+                              label: "reset",
                               title: "Challenges",
                             );
                           },

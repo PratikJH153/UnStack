@@ -3,7 +3,6 @@ import 'package:dailytodo/views/add_todo_page.dart';
 import 'package:dailytodo/views/todo_list.dart';
 import 'package:dailytodo/widgets/alert_dialog.dart';
 import 'package:dailytodo/widgets/constants.dart';
-import 'package:dailytodo/widgets/floatingactionButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -68,6 +67,7 @@ class TodoListPage extends StatelessWidget {
                                   .clearData();
                               Navigator.pop(context);
                             },
+                            label: "clear all",
                             title: "Todos",
                           );
                         },
@@ -98,7 +98,7 @@ class TodoListPage extends StatelessWidget {
                         letterSpacing: 2,
                       )),
                   TextSpan(
-                    text: " Tasks left",
+                    text: " Tasks Done",
                   ),
                 ]),
               ),

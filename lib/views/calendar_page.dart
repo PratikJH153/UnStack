@@ -6,7 +6,6 @@ import 'package:dailytodo/widgets/no_todo_widget.dart';
 import 'package:dailytodo/widgets/tap_day_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class CalendarPage extends StatefulWidget {
   @override
@@ -47,7 +46,8 @@ class _CalendarPageState extends State<CalendarPage> {
                           setState(() {});
                           Navigator.pop(context);
                         },
-                        title: "Todos",
+                        label: "reset",
+                        title: "Daily Tracks",
                       );
                     },
                   );

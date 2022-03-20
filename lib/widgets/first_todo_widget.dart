@@ -1,7 +1,6 @@
 import 'package:dailytodo/models/todo.dart';
 import 'package:dailytodo/widgets/confirmation_slider.dart';
 import 'package:dailytodo/widgets/constants.dart';
-import 'package:dailytodo/widgets/priority_widget.dart';
 import 'package:flutter/material.dart';
 
 class FirstTodoWidget extends StatelessWidget {

@@ -4,11 +4,9 @@ import 'package:dailytodo/views/wrapper.dart';
 import 'package:dailytodo/widgets/alert_dialog.dart';
 import 'package:dailytodo/widgets/app_bar.dart';
 import 'package:dailytodo/widgets/constants.dart';
-import 'package:dailytodo/widgets/floatingactionButton.dart';
 import 'package:dailytodo/widgets/priority_widget.dart';
 import 'package:dailytodo/widgets/snackbar_widget.dart';
 import 'package:dailytodo/widgets/textFields.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AddTimeLinePage extends StatefulWidget {
@@ -109,6 +107,7 @@ class _AddTimeLinePageState extends State<AddTimeLinePage> {
                           builder: (context) {
                             return alertDialog(
                               title: "Timelines",
+                              label: "reset",
                               context: context,
                               isYes: () async {
                                 await DatabaseService.instance.deleteAllDays();
@@ -149,6 +148,7 @@ class _AddTimeLinePageState extends State<AddTimeLinePage> {
                   margin: const EdgeInsets.only(top: 20),
                   child: TextFieldWidget(
                     hintText: "Description",
+                    isDes: true,
                     textEditingController: _desController,
                   ),
                 ),

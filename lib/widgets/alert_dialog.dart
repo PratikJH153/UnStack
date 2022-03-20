@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 AlertDialog alertDialog({
   BuildContext? context,
   required String title,
+  required String label,
   Function? isYes,
 }) {
   return AlertDialog(
@@ -10,7 +11,7 @@ AlertDialog alertDialog({
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     title: Text(title),
     content: Text(
-      "Are you sure to reset every $title?",
+      "Are you sure to $label every $title?",
       style: const TextStyle(
         color: Color(0xFFBDBDBD),
         fontWeight: FontWeight.w400,
