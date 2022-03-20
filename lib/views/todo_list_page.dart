@@ -15,11 +15,17 @@ class TodoListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: floatingActionButton(
-        backgroundColor: Colors.grey[900],
-        context: context,
-        icon: CupertinoIcons.add,
-        location: AddTodoPage.id,
+      floatingActionButton: SizedBox(
+        height: 60,
+        width: 60,
+        child: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, AddTodoPage.id),
+          backgroundColor: Colors.grey[900],
+          child: Icon(
+            CupertinoIcons.add,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: SafeArea(
         child: Container(
@@ -51,7 +57,6 @@ class TodoListPage extends StatelessWidget {
                   ),
                   Spacer(),
                   TextButton(
-                    // ! ADD CHECK DIALOG HERE
                     onPressed: () async {
                       showCupertinoDialog(
                         context: context,
@@ -63,7 +68,7 @@ class TodoListPage extends StatelessWidget {
                                   .clearData();
                               Navigator.pop(context);
                             },
-                            title: "Challenges",
+                            title: "Todos",
                           );
                         },
                       );

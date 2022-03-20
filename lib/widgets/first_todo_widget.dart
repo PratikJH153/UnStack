@@ -18,7 +18,7 @@ class FirstTodoWidget extends StatelessWidget {
     return Container(
       width: getWidth(context),
       padding: const EdgeInsets.only(
-        left: 50,
+        left: 40,
         top: 20,
         right: 30,
         bottom: 20,
@@ -31,7 +31,7 @@ class FirstTodoWidget extends StatelessWidget {
         //   ],
         // ),
         gradient: new LinearGradient(
-          stops: [0.08, 0.015],
+          stops: [0.05, 0.015],
           colors: [
             priorities[todo!.priority],
             kprimaryColor,

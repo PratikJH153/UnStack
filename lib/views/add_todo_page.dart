@@ -1,6 +1,8 @@
 import 'package:dailytodo/database/database.dart';
+import 'package:dailytodo/helper/ad_helper.dart';
 import 'package:dailytodo/models/todo.dart';
 import 'package:dailytodo/helper/todo_data.dart';
+import 'package:dailytodo/views/todo_list.dart';
 import 'package:dailytodo/views/todo_list_page.dart';
 import 'package:dailytodo/views/wrapper.dart';
 import 'package:dailytodo/widgets/app_bar.dart';
@@ -27,6 +29,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
   String? _priority = "Easy";
 
   TextEditingController _titleController = TextEditingController();
+  final AdmobHelper admobHelper = AdmobHelper();
 
   _submit() async {
     if (_titleController.text.trim().isNotEmpty &&
@@ -37,20 +40,23 @@ class _AddTodoPageState extends State<AddTodoPage> {
           priority: _priority,
         );
         todo.status = 0;
-        await DatabaseService.instance.insertTodo(todo).then((value) async {
+        await DatabaseService.instance.insertTodo(todo).then((value) {
           Provider.of<TodoData>(context, listen: false)
               .addTodo(todo, value); //Todo(id:null, title:jkhsadfkjds)
         }); //Todo(title:jkhsadfkjds)
-
+        final todoData =
+            Provider.of<TodoData>(context, listen: false).todoCount;
+        Navigator.of(context).pushNamedAndRemoveUntil(
+            Wrapper.id, (Route<dynamic> route) => false);
       } else {
         widget.todo!.title = _titleController.text.trim();
         widget.todo!.priority = _priority;
 
         Provider.of<TodoData>(context, listen: false).updateTodo(widget.todo!);
         await DatabaseService.instance.updateTodo(widget.todo!);
+        Navigator.of(context).pushNamedAndRemoveUntil(
+            Wrapper.id, (Route<dynamic> route) => false);
       }
-      Navigator.of(context)
-          .pushNamedAndRemoveUntil(Wrapper.id, (Route<dynamic> route) => false);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         snackBarWidget(
@@ -79,11 +85,17 @@ class _AddTodoPageState extends State<AddTodoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: floatingActionButton(
-        backgroundColor: Colors.grey[900],
-        context: context,
-        icon: CupertinoIcons.line_horizontal_3_decrease,
-        location: TodoListPage.id,
+      floatingActionButton: SizedBox(
+        height: 60,
+        width: 60,
+        child: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, TodoListPage.id),
+          backgroundColor: Colors.grey[900],
+          child: Icon(
+            CupertinoIcons.line_horizontal_3_decrease,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: SafeArea(

@@ -7,19 +7,32 @@ import 'package:dailytodo/widgets/constants.dart';
 import 'package:dailytodo/widgets/next_button.dart';
 import 'package:flutter/material.dart';
 
-class AskNamePage extends StatelessWidget {
+class AskNamePage extends StatefulWidget {
   static const id = '/asknamePage';
 
+  @override
+  State<AskNamePage> createState() => _AskNamePageState();
+}
+
+class _AskNamePageState extends State<AskNamePage> {
   final _formKey = GlobalKey<FormState>();
+  bool _isLoading = false;
+
   final TextEditingController _nameController = TextEditingController();
 
   void getName(BuildContext context) async {
     final _form = _formKey.currentState!;
     if (_form.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
       _form.save();
       DisplayName.setName(_nameController.text.trim());
       TimeLinePref.setday(0);
       await DatabaseService.instance.insertDay();
+      setState(() {
+        _isLoading = false;
+      });
       Navigator.of(context)
           .pushNamedAndRemoveUntil(Wrapper.id, (Route<dynamic> route) => false);
     }
@@ -38,7 +51,11 @@ class AskNamePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             backButton(context),
-            nextButton(() => getName(context)),
+            _isLoading
+                ? nextButton(() => getName(context))
+                : Center(
+                    child: CircularProgressIndicator(),
+                  ),
           ],
         ),
       ),

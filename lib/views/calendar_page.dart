@@ -1,9 +1,12 @@
 import 'package:dailytodo/database/database.dart';
 import 'package:dailytodo/models/day.dart';
+import 'package:dailytodo/widgets/alert_dialog.dart';
 import 'package:dailytodo/widgets/constants.dart';
 import 'package:dailytodo/widgets/no_todo_widget.dart';
 import 'package:dailytodo/widgets/tap_day_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CalendarPage extends StatefulWidget {
   @override
@@ -33,7 +36,22 @@ class _CalendarPageState extends State<CalendarPage> {
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (context) {
+                      return alertDialog(
+                        context: context,
+                        isYes: () async {
+                          await DatabaseService.instance.deleteDays();
+                          setState(() {});
+                          Navigator.pop(context);
+                        },
+                        title: "Todos",
+                      );
+                    },
+                  );
+                },
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                 ),

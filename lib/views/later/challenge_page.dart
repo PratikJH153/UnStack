@@ -59,11 +59,17 @@ class _ChallengePageState extends State<ChallengePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: floatingActionButton(
-        backgroundColor: kaccentColor,
-        context: context,
-        icon: CupertinoIcons.add,
-        location: AddChallengePage.id,
+      floatingActionButton: SizedBox(
+        height: 60,
+        width: 60,
+        child: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, AddChallengePage.id),
+          backgroundColor: kaccentColor,
+          child: Icon(
+            CupertinoIcons.add,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(

@@ -15,11 +15,18 @@ class TimelinePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: floatingActionButton(
-        context: context,
-        backgroundColor: kaccentColor,
-        icon: CupertinoIcons.calendar_badge_plus,
-        location: AddTimeLinePage.id,
+      floatingActionButton: SizedBox(
+        height: 60,
+        width: 60,
+        child: FloatingActionButton(
+          heroTag: AddTimeLinePage.id,
+          onPressed: () => Navigator.pushNamed(context, AddTimeLinePage.id),
+          backgroundColor: kaccentColor,
+          child: Icon(
+            CupertinoIcons.calendar_badge_plus,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(
@@ -46,19 +53,22 @@ class TimelinePage extends StatelessWidget {
 
                       final Timeline timeline = snapshot.data[index - 1];
                       return Slidable(
-                        startActionPane: ActionPane(
-                          motion: Container(),
+                        endActionPane: ActionPane(
+                          motion: const ScrollMotion(),
                           children: [
-                            IconButton(
-                              icon: Icon(
-                                CupertinoIcons.pencil_outline,
-                                color: Colors.white,
-                              ),
-                              onPressed: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => AddTimeLinePage(
-                                    timeline: timeline,
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20.0),
+                              child: IconButton(
+                                icon: Icon(
+                                  CupertinoIcons.pencil_outline,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => AddTimeLinePage(
+                                      timeline: timeline,
+                                    ),
                                   ),
                                 ),
                               ),

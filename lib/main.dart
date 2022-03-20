@@ -11,11 +11,13 @@ import 'package:dailytodo/views/todo_list_page.dart';
 import 'package:dailytodo/views/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'helper/todo_data.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   Paint.enableDithering = true;
   SystemChrome.setPreferredOrientations(
     [

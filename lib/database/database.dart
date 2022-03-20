@@ -215,6 +215,12 @@ class DatabaseService {
     }
   }
 
+  Future<void> deleteDays() async {
+    Database? db = await this.database;
+    await db!.execute("DELETE FROM $dayTable");
+    await insertDay();
+  }
+
   Future<int> updateDay(Day day) async {
     Database? db = await this.database;
     final int result = await db!.update(

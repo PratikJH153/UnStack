@@ -13,11 +13,17 @@ class PlanGoalsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: floatingActionButton(
-        backgroundColor: kaccentColor,
-        context: context,
-        icon: CupertinoIcons.bolt_horizontal_fill,
-        location: AddPlannedGoalsPage.id,
+      floatingActionButton: SizedBox(
+        height: 60,
+        width: 60,
+        child: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, AddPlannedGoalsPage.id),
+          backgroundColor: kaccentColor,
+          child: Icon(
+            CupertinoIcons.bolt_horizontal_fill,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(

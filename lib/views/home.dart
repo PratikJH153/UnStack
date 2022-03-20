@@ -48,6 +48,7 @@ class _HomePageState extends State<HomePage> {
     _controllerCenter =
         ConfettiController(duration: const Duration(seconds: 3));
     getData();
+
     super.initState();
   }
 
@@ -86,11 +87,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double height = getHeight(context);
     return Scaffold(
-      floatingActionButton: floatingActionButton(
-        backgroundColor: kaccentColor,
-        context: context,
-        icon: CupertinoIcons.add,
-        location: AddTodoPage.id,
+      floatingActionButton: SizedBox(
+        height: 60,
+        width: 60,
+        child: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, AddTodoPage.id),
+          backgroundColor: kaccentColor,
+          child: Icon(
+            CupertinoIcons.add,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -217,12 +224,6 @@ class _HomePageState extends State<HomePage> {
                                         ? FirstTodoWidget(
                                             todo: todoData.getTodo(0),
                                             onConfirmed: () async {
-                                              var rng = Random();
-                                              int randomNum = rng.nextInt(1);
-                                              // print(random_num);
-                                              if (randomNum == 0) {
-                                                admobHelper.showInterad(() {});
-                                              }
                                               final todos = todoData.getTodo(0);
                                               _controllerCenter.play();
                                               Todo todo = Todo(
@@ -250,6 +251,14 @@ class _HomePageState extends State<HomePage> {
                                               });
                                               await DatabaseService.instance
                                                   .updateTodo(todo);
+
+                                              if (todoData.completedTasks ==
+                                                  1) {
+                                                admobHelper.showInterad(() {});
+                                              } else if (todoData.todoCount ==
+                                                  todoData.completedTasks) {
+                                                admobHelper.showInterad(() {});
+                                              }
                                             },
                                           )
                                         : DummyTile(),
