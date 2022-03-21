@@ -17,18 +17,12 @@ class FirstTodoWidget extends StatelessWidget {
     return Container(
       width: getWidth(context),
       padding: const EdgeInsets.only(
-        left: 40,
-        top: 20,
-        right: 30,
-        bottom: 20,
+        left: 45,
+        top: 25,
+        right: 25,
+        bottom: 25,
       ),
       decoration: BoxDecoration(
-        // gradient: LinearGradient(
-        //   colors: [
-        //     Color(0xFF6e9fff),
-        //     Color(0xFF2b5dff),
-        //   ],
-        // ),
         gradient: new LinearGradient(
           stops: [0.05, 0.015],
           colors: [
@@ -56,12 +50,12 @@ class FirstTodoWidget extends StatelessWidget {
             textAlign: TextAlign.center,
             style: kTextFieldHintTextStyle.copyWith(
               height: 1.5,
-              fontSize: 20,
+              fontSize: 22,
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(
-              top: 30.0,
+              top: 20.0,
               bottom: 10,
             ),
             child: confirmationSlider(

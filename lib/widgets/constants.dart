@@ -10,7 +10,7 @@ double getWidth(BuildContext context) {
 }
 
 const Color kprimaryColor = Color(0xFF212024);
-const Color kaccentColor = Color(0xFF5c7aff);
+const Color kaccentColor = const Color.fromARGB(255, 121, 89, 250);
 const Color kcanvasColor = Color(0xFFff3d6b);
 
 const kIntroTextStyle = TextStyle(

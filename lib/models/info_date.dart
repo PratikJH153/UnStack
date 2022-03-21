@@ -66,9 +66,9 @@ List<SliderModel> getSlides() {
   //4
 
   sliderModel.setDesc(
-    "A feature coming soon about Daily tracking your Consistency",
+    "A feature that allows you to daily track your consistency",
   );
-  sliderModel.setTitle("Consistency & Hard Work helps you to Grow More!");
+  sliderModel.setTitle("Consistency & Hard Work helps you to Grow!");
   sliderModel.setImageAssetPath("assets/images/soon1.png");
   slides.add(sliderModel);
 

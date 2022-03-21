@@ -82,7 +82,7 @@ class _AskNamePageState extends State<AskNamePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Stacked",
+                        "UnStack",
                         style: kIntroTextStyle,
                       ),
                       SizedBox(

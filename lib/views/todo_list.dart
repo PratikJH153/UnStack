@@ -1,5 +1,4 @@
 import 'package:dailytodo/database/database.dart';
-import 'package:dailytodo/helper/ad_helper.dart';
 import 'package:dailytodo/helper/todo_data.dart';
 import 'package:dailytodo/views/add_todo_page.dart';
 import 'package:dailytodo/widgets/constants.dart';
@@ -16,7 +15,6 @@ class TodoList extends StatefulWidget {
 
 class _TodoListState extends State<TodoList> {
   final DatabaseService _databaseService = DatabaseService.instance;
-  final AdmobHelper admobHelper = AdmobHelper();
 
   @override
   Widget build(BuildContext context) {
@@ -114,12 +112,6 @@ class _TodoListState extends State<TodoList> {
                                 .updateTodo(todo);
                             await Provider.of<TodoData>(context, listen: false)
                                 .getTodoFromDatabase();
-                            if (todoData.completedTasks == 1) {
-                              admobHelper.showInterad(() {});
-                            } else if (todoData.todoCount ==
-                                todoData.completedTasks) {
-                              admobHelper.showInterad(() {});
-                            }
                           },
                           title: Text(
                             todo.title!,

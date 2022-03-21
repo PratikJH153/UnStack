@@ -6,7 +6,6 @@ import 'package:dailytodo/helper/todo_data.dart';
 import 'package:dailytodo/views/add_todo_page.dart';
 import 'package:dailytodo/widgets/dummy_tile.dart';
 import 'package:dailytodo/widgets/first_todo_widget.dart';
-import 'package:dailytodo/widgets/floatingactionButton.dart';
 import 'package:dailytodo/widgets/no_todo_widget.dart';
 import 'package:dailytodo/widgets/snackbar_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -89,12 +88,61 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double height = getHeight(context);
     return Scaffold(
+      // floatingActionButton: ElevatedButton(
+      //   style: ElevatedButton.styleFrom(
+      //     shape: RoundedRectangleBorder(
+      //       borderRadius: BorderRadius.circular(100),
+      //     ),
+      //     primary: Color.fromARGB(255, 121, 89, 250),
+      //   ),
+      //   child: Padding(
+      //     padding: const EdgeInsets.symmetric(
+      //       vertical: 12,
+      //     ),
+      //     child: Row(
+      //       mainAxisSize: MainAxisSize.min,
+      //       children: [
+      //         Icon(
+      //           CupertinoIcons.add,
+      //           size: 20,
+      //         ),
+      //         const SizedBox(
+      //           width: 4,
+      //         ),
+      //         Text("Create a Todo"),
+      //       ],
+      //     ),
+      //   ),
+      //   onPressed: () {
+      //     var rng = Random();
+      //     int num = rng.nextInt(2);
+      //     if (num == 1) {
+      //       print("SHOW ADS");
+      //       admobHelper.showInterad(() {
+      //         Navigator.pushNamed(context, AddTodoPage.id);
+      //       });
+      //     } else {
+      //       Navigator.pushNamed(context, AddTodoPage.id);
+      //     }
+      //   },
+      // ),
       floatingActionButton: SizedBox(
         height: 60,
         width: 60,
         child: FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context, AddTodoPage.id),
-          backgroundColor: kaccentColor,
+          onPressed: () {
+            var rng = Random();
+            int num = rng.nextInt(2);
+            if (num == 1) {
+              print("SHOW ADS");
+              admobHelper.showInterad(() {
+                Navigator.pushNamed(context, AddTodoPage.id);
+              });
+            } else {
+              Navigator.pushNamed(context, AddTodoPage.id);
+            }
+          },
+          backgroundColor: const Color.fromARGB(255, 121, 89, 250),
           child: Icon(
             CupertinoIcons.add,
             color: Colors.white,
@@ -127,12 +175,13 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     !Provider.of<TodoData>(context).isListEmpty
                         ? Consumer<TodoData>(
                             builder: (context, todoData, child) {
                               return Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
                                     margin: EdgeInsets.only(top: 40),
@@ -146,7 +195,8 @@ class _HomePageState extends State<HomePage> {
                                             .scaffoldBackgroundColor,
                                         boxShadow: const [
                                           BoxShadow(
-                                            color: Colors.black38,
+                                            color:
+                                                Color.fromARGB(96, 32, 32, 32),
                                             offset: Offset(4.0, 4.0),
                                             blurRadius: 10.0,
                                             spreadRadius: 3.0,
@@ -163,10 +213,10 @@ class _HomePageState extends State<HomePage> {
                                         arcType: ArcType.FULL,
                                         animateFromLastPercent: true,
                                         arcBackgroundColor: Colors.black26,
-                                        radius: 120.0,
+                                        radius: 110.0,
                                         animation: true,
                                         animationDuration: 1200,
-                                        lineWidth: 20.0,
+                                        lineWidth: 10.0,
                                         percent: todoData.percentage,
                                         center: Container(
                                           alignment: Alignment.center,

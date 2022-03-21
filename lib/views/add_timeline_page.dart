@@ -34,7 +34,7 @@ class _AddTimeLinePageState extends State<AddTimeLinePage> {
 
   _submit() async {
     if (_titleController.text.trim().isNotEmpty &&
-        _titleController.text.trim().length > 3) {
+        _titleController.text.trim().length > 1) {
       if (widget.timeline == null) {
         Timeline timeline = Timeline(
           title: _titleController.text.trim(),
